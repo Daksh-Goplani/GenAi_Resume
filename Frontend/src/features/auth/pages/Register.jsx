@@ -4,9 +4,9 @@ import { useAuth } from '../hooks/userAuth'
 
 const Register = () => {
     const navigate = useNavigate()
-    const [Username, setUsername] = useState('')
+    const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
-    const [Password, setPassword] = useState('')
+    const [password, setPassword] = useState('')
 
     const { loading, handleRegister } = useAuth()
 
@@ -34,19 +34,19 @@ const Register = () => {
                         <label htmlFor="username">Username</label>
                         <input
                             onChange={(e) => { setUsername(e.target.value) }}
-                            type="username" id='username' name='username' placeholder='Enter Username ' />
+                            type="text" id='username' name='username' placeholder='Enter Username' />
                     </div>
                     <div className="input-group">
                         <label htmlFor="email">Email</label>
                         <input
                             onChange={(e) => { setEmail(e.target.value) }}
-                            type="email" id='email' name='email' placeholder='Enter Email Adress' />
+                            type="email" id='email' name='email' placeholder='Enter Email Address' />
                     </div>
                     <div className="input-group">
                         <label htmlFor="password">Password</label>
                         <input
-                            onChange={(e) => { e.target.value }}
-                            type="password" id='password' name='password' placeholder='Enter Password ' />
+                            onChange={(e) => { setPassword(e.target.value) }}
+                            type="password" id='password' name='password' placeholder='Enter Password' />
                     </div>
                     <button className='button primary-button'>Register</button>
                 </form>

@@ -7,28 +7,28 @@ const technicalQuestionSchema = new mongoose.Schema({
     },
     intention: {
         type: String,
-        require: [true, 'Intention is required']
+        required: [true, 'Intention is required']
     },
     answer: {
         type: String,
-        require: [true, 'Answer is required']
+        required: [true, 'Answer is required']
     }
 }, {
     _id: false
 })
 
-const behaviourQuestionSchema = new mongoose.Schema({
+const behavioralQuestionSchema = new mongoose.Schema({
     question: {
         type: String,
-        required: [true, 'Technical question is required']
+        required: [true, 'Behavioral question is required']
     },
     intention: {
         type: String,
-        require: [true, 'Intention is required']
+        required: [true, 'Intention is required']
     },
     answer: {
         type: String,
-        require: [true, 'Answer is required']
+        required: [true, 'Answer is required']
     }
 }, {
     _id: false
@@ -39,7 +39,7 @@ const skillGapSchema = new mongoose.Schema({
         type: String,
         required: [true, 'Skill is required']
     },
-    severiry: {
+    severity: {
         type: String,
         enum: ["low", "medium", "high"]
     }
@@ -47,7 +47,7 @@ const skillGapSchema = new mongoose.Schema({
     _id: false
 })
 
-const preperationPlanSchema = new mongoose.Schema({
+const preparationPlanSchema = new mongoose.Schema({
     day: {
         type: Number,
         required: [true, "Day is required"]
@@ -70,7 +70,7 @@ const interviewReportSchema = new mongoose.Schema({
     resume: {
         type: String
     },
-    selfDesctiption: {
+    selfDescription: {
         type: String
     },
     matchScore: {
@@ -79,9 +79,9 @@ const interviewReportSchema = new mongoose.Schema({
         max: 100
     },
     technicalQuestions: [technicalQuestionSchema],
-    behaviourQuestion: [behaviourQuestionSchema],
-    skillGap: [skillGapSchema],
-    preperationPlan: [preperationPlanSchema],
+    behavioralQuestions: [behavioralQuestionSchema],
+    skillGaps: [skillGapSchema],
+    preparationPlan: [preparationPlanSchema],
     user: {
         type: mongoose.Schema.Types.ObjectId,
         ref: "user"

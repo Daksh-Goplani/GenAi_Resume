@@ -33,21 +33,91 @@ const interviewReportSchema = z.object({
 
 async function generateInterviewReport({ resume, selfDescription, jobDescription }) {
 
-    const prompt = `Generate an interview report for a candidate with the following details:
-                        Resume: ${resume}
-                        Self Description: ${selfDescription}
-                        Job Description: ${jobDescription}
+    const prompt = `
+Generate an interview report.
+
+Return ONLY valid JSON.
+
+Follow this structure EXACTLY:
+
+{
+  "title": "Junior MERN Developer Interview Report",
+  "matchScore": 90,
+  "technicalQuestions": [
+    {
+      "question": "Explain JWT Authentication",
+      "intention": "Check backend security knowledge",
+      "answer": "Discuss token generation and verification"
+    }
+  ],
+  "behavioralQuestions": [
+    {
+      "question": "Tell me about a challenge",
+      "intention": "Evaluate problem solving",
+      "answer": "Use STAR method"
+    }
+  ],
+  "skillGaps": [
+    {
+      "skill": "Testing",
+      "severity": "medium"
+    }
+  ],
+  "preparationPlan": [
+    {
+      "day": 1,
+      "focus": "React Fundamentals",
+      "tasks": [
+        "Review Hooks",
+        "Build sample project"
+      ]
+    }
+  ]
+}
+
+IMPORTANT:
+- technicalQuestions must be array of objects
+- behavioralQuestions must be array of objects
+- skillGaps must be array of objects
+- preparationPlan must be array of objects
+- Do not return arrays of strings
+- Return only JSON
+
+Resume:
+${resume}
+
+Self Description:
+${selfDescription}
+
+Job Description:
+${jobDescription}
 `
+
     const response = await ai.models.generateContent({
-        model: "gemini-3-flash-preview",
+        model: "gemini-2.5-flash",
         contents: prompt,
         config: {
             responseMimeType: "application/json",
             responseSchema: zodToJsonSchema(interviewReportSchema),
         }
-    })
-    
-    return JSON.parse(response.text)
+    });
+
+    console.log("RAW AI RESPONSE:");
+    console.log(response.text);
+
+    const parsed = JSON.parse(response.text);
+
+    const result = interviewReportSchema.safeParse(parsed);
+
+    if (!result.success) {
+        console.log("ZOD VALIDATION ERROR:");
+        console.log(result.error.format());
+        console.log(JSON.stringify(result.error.issues, null, 2))
+        throw new Error("AI returned invalid format");
+    }
+
+    return result.data;
+
 }
 
 module.exports = generateInterviewReport
