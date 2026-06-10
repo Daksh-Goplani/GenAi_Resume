@@ -16,7 +16,6 @@ export const useAuth = () => {
         } finally {
             setLoading(false)
         }
-
     }
     const handleRegister = async ({ username, email, password }) => {
         setLoading(true)
@@ -44,9 +43,12 @@ export const useAuth = () => {
 
     useEffect(() => {
         const getAndSetUser = async () => {
-            const data = await getme()
-            setuser(data.user)
-            setLoading(false)
+            try {
+                const data = await getme()
+                setuser(data.user)
+            } catch (error) {} finally {
+                setLoading(false)
+            }
         }
         getAndSetUser()
     }, [])

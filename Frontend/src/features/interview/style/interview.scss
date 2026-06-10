@@ -1,0 +1,728 @@
+// ─────────────────────────────────────────────────────────────
+// INTERVIEW PAGE - MATCHING HOME PAGE THEME
+// ─────────────────────────────────────────────────────────────
+
+$bg-page: #0a0a0a;
+$bg-card: #161b22;
+$bg-panel: #1e2535;
+$bg-input: #222b3d;
+
+$border-color: rgba(255, 255, 255, 0.08);
+
+$text-primary: #e6edf3;
+$text-muted: #8b949e;
+
+$accent: #ff2d78;
+$accent-alt: #ff6b9d;
+
+$severity-high: #ef4444;
+$severity-medium: #f59e0b;
+$severity-low: #22c55e;
+
+$font-stack:
+  system-ui,
+  -apple-system,
+  BlinkMacSystemFont,
+  "Segoe UI",
+  Roboto,
+  sans-serif;
+
+// ─────────────────────────────────────────────────────────────
+// SCROLLBAR
+// ─────────────────────────────────────────────────────────────
+
+.interview-content::-webkit-scrollbar {
+  width: 6px;
+}
+
+.interview-content::-webkit-scrollbar-thumb {
+  background: rgba($accent, 0.35);
+  border-radius: 999px;
+}
+
+.interview-content::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+// ─────────────────────────────────────────────────────────────
+// PAGE
+// ─────────────────────────────────────────────────────────────
+
+.interview-page {
+  width: 100%;
+  min-height: 100vh;
+  padding: 2rem;
+
+  color: $text-primary;
+  font-family: $font-stack;
+
+  background:
+    radial-gradient(circle at top left,
+      rgba($accent, 0.08),
+      transparent 25%),
+    radial-gradient(circle at bottom right,
+      rgba($accent-alt, 0.08),
+      transparent 25%),
+    $bg-page;
+}
+
+// ─────────────────────────────────────────────────────────────
+// MAIN LAYOUT
+// ─────────────────────────────────────────────────────────────
+
+.interview-layout {
+  display: flex;
+
+  width: 100%;
+  max-width: 1500px;
+
+  margin: 0 auto;
+
+  background: rgba(22, 27, 34, 0.85);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  border-radius: 24px;
+
+  overflow: hidden;
+
+  box-shadow:
+    0 25px 80px rgba(0, 0, 0, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.03);
+}
+
+.interview-divider {
+  width: 1px;
+  background: $border-color;
+  flex-shrink: 0;
+}
+
+// ─────────────────────────────────────────────────────────────
+// NAVIGATION
+// ─────────────────────────────────────────────────────────────
+
+.interview-nav {
+  width: 260px;
+  flex-shrink: 0;
+
+  padding: 2rem 1rem;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  .nav-content {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+  }
+
+  &__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+
+    color: $text-muted;
+
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  &__item {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+
+    width: 100%;
+
+    padding: 0.9rem 1rem;
+
+    border: none;
+    border-radius: 12px;
+
+    background: transparent;
+
+    color: $text-muted;
+
+    font-family: $font-stack;
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+
+    &:hover {
+      transform: translateX(4px);
+
+      background: rgba(255, 255, 255, 0.04);
+
+      color: $text-primary;
+    }
+
+    &--active {
+      background: rgba($accent, 0.12);
+
+      border: 1px solid rgba($accent, 0.25);
+
+      color: $accent;
+
+      box-shadow:
+        0 8px 20px rgba($accent, 0.15);
+    }
+  }
+
+  &__icon {
+    display: flex;
+    align-items: center;
+
+    svg {
+      width: 18px;
+      height: 18px;
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// BUTTON
+// ─────────────────────────────────────────────────────────────
+
+.primary-button {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 1rem;
+
+  border: none;
+  border-radius: 12px;
+
+  background:
+    linear-gradient(
+      135deg,
+      $accent,
+      $accent-alt
+    );
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  box-shadow:
+    0 10px 25px rgba($accent, 0.35);
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+
+    box-shadow:
+      0 15px 35px rgba($accent, 0.45);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// CONTENT
+// ─────────────────────────────────────────────────────────────
+
+.interview-content {
+  flex: 1;
+
+  padding: 2rem;
+
+  overflow-y: auto;
+
+  max-height: calc(100vh - 4rem);
+
+  section {
+    width: 100%;
+  }
+}
+
+.content-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  margin-bottom: 2rem;
+  padding-bottom: 1rem;
+
+  border-bottom: 1px solid $border-color;
+
+  h2 {
+    margin: 0;
+
+    font-size: 1.5rem;
+    font-weight: 700;
+  }
+
+  &__count {
+    padding: 0.35rem 0.85rem;
+
+    border-radius: 999px;
+
+    background: rgba(255, 255, 255, 0.03);
+
+    border: 1px solid $border-color;
+
+    color: $text-muted;
+
+    font-size: 0.8rem;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// QUESTION CARDS
+// ─────────────────────────────────────────────────────────────
+
+.q-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.q-card {
+  background: $bg-panel;
+
+  border: 1px solid $border-color;
+
+  border-radius: 16px;
+
+  overflow: hidden;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+
+    border-color: rgba($accent, 0.3);
+
+    box-shadow:
+      0 12px 30px rgba(0, 0, 0, 0.25);
+  }
+
+  &__header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+
+    padding: 1.2rem;
+
+    cursor: pointer;
+  }
+
+  &__index {
+    background: rgba($accent, 0.12);
+
+    color: $accent;
+
+    border: 1px solid rgba($accent, 0.2);
+
+    border-radius: 8px;
+
+    padding: 0.3rem 0.6rem;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  &__question {
+    flex: 1;
+
+    margin: 0;
+
+    line-height: 1.6;
+
+    font-size: 0.95rem;
+  }
+
+  &__chevron {
+    color: $text-muted;
+
+    transition: transform 0.25s ease;
+
+    &--open {
+      transform: rotate(180deg);
+
+      color: $accent;
+    }
+  }
+
+  &__body {
+    padding: 1rem 1.2rem;
+
+    border-top: 1px solid $border-color;
+
+    background: rgba(255, 255, 255, 0.01);
+
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  &__section {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    p {
+      margin: 0;
+
+      color: $text-muted;
+
+      line-height: 1.7;
+    }
+  }
+
+  &__tag {
+    width: fit-content;
+
+    padding: 0.3rem 0.7rem;
+
+    border-radius: 999px;
+
+    font-size: 0.7rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    &--intention {
+      color: #a78bfa;
+      background: rgba(#a78bfa, 0.1);
+      border: 1px solid rgba(#a78bfa, 0.2);
+    }
+
+    &--answer {
+      color: #22c55e;
+      background: rgba(#22c55e, 0.1);
+      border: 1px solid rgba(#22c55e, 0.2);
+    }
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// ROADMAP
+// ─────────────────────────────────────────────────────────────
+
+.roadmap-list {
+  position: relative;
+
+  display: flex;
+  flex-direction: column;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    left: 28px;
+    top: 0;
+    bottom: 0;
+
+    width: 3px;
+
+    background:
+      linear-gradient(
+        to bottom,
+        $accent,
+        $accent-alt
+      );
+
+    border-radius: 999px;
+  }
+}
+
+.roadmap-day {
+  position: relative;
+
+  padding: 0.75rem 0 1rem 4rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+
+  &::before {
+    content: "";
+
+    position: absolute;
+
+    left: 21px;
+    top: 1rem;
+
+    width: 16px;
+    height: 16px;
+
+    border-radius: 50%;
+
+    background: $bg-card;
+
+    border: 3px solid $accent;
+
+    box-shadow:
+      0 0 15px rgba($accent, 0.45);
+  }
+
+  &__header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+  }
+
+  &__badge {
+    padding: 0.25rem 0.75rem;
+
+    border-radius: 999px;
+
+    background: rgba($accent, 0.12);
+
+    color: $accent;
+
+    border: 1px solid rgba($accent, 0.2);
+
+    font-size: 0.75rem;
+    font-weight: 700;
+  }
+
+  &__focus {
+    margin: 0;
+
+    font-size: 1rem;
+    font-weight: 600;
+  }
+
+  &__tasks {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+
+    li {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.6rem;
+
+      color: $text-muted;
+
+      line-height: 1.6;
+    }
+  }
+
+  &__bullet {
+    width: 6px;
+    height: 6px;
+
+    margin-top: 9px;
+
+    border-radius: 50%;
+
+    background: $accent;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// SIDEBAR
+// ─────────────────────────────────────────────────────────────
+
+.interview-sidebar {
+  width: 280px;
+
+  padding: 2rem 1.5rem;
+
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.sidebar-divider {
+  height: 1px;
+  background: $border-color;
+}
+
+// ─────────────────────────────────────────────────────────────
+// MATCH SCORE
+// ─────────────────────────────────────────────────────────────
+
+.match-score {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  &__label {
+    width: 100%;
+
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    color: $text-muted;
+  }
+
+  &__ring {
+    width: 120px;
+    height: 120px;
+
+    border-radius: 50%;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    border: 4px solid;
+
+    background: rgba(255, 255, 255, 0.02);
+
+    backdrop-filter: blur(10px);
+
+    &.score--high {
+      border-color: $severity-low;
+
+      box-shadow:
+        0 0 25px rgba($severity-low, 0.35);
+    }
+
+    &.score--mid {
+      border-color: $severity-medium;
+
+      box-shadow:
+        0 0 25px rgba($severity-medium, 0.35);
+    }
+
+    &.score--low {
+      border-color: $severity-high;
+
+      box-shadow:
+        0 0 25px rgba($severity-high, 0.35);
+    }
+  }
+
+  &__value {
+    font-size: 2rem;
+    font-weight: 800;
+  }
+
+  &__pct {
+    font-size: 0.8rem;
+    color: $text-muted;
+  }
+
+  &__sub {
+    text-align: center;
+
+    color: $text-muted;
+
+    font-size: 0.85rem;
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// SKILL GAPS
+// ─────────────────────────────────────────────────────────────
+
+.skill-gaps {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  &__label {
+    font-size: 0.75rem;
+    font-weight: 700;
+
+    text-transform: uppercase;
+
+    color: $text-muted;
+  }
+
+  &__list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+}
+
+.skill-tag {
+  padding: 0.45rem 0.85rem;
+
+  border-radius: 999px;
+
+  font-size: 0.8rem;
+  font-weight: 600;
+
+  border: 1px solid;
+
+  transition: all 0.25s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &--high {
+    color: $severity-high;
+    background: rgba($severity-high, 0.1);
+    border-color: rgba($severity-high, 0.25);
+  }
+
+  &--medium {
+    color: $severity-medium;
+    background: rgba($severity-medium, 0.1);
+    border-color: rgba($severity-medium, 0.25);
+  }
+
+  &--low {
+    color: $severity-low;
+    background: rgba($severity-low, 0.1);
+    border-color: rgba($severity-low, 0.25);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────
+// RESPONSIVE
+// ─────────────────────────────────────────────────────────────
+
+@media (max-width: 1100px) {
+  .interview-layout {
+    flex-direction: column;
+  }
+
+  .interview-divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .interview-nav,
+  .interview-sidebar {
+    width: 100%;
+  }
+
+  .interview-content {
+    max-height: unset;
+  }
+}
+
+@media (max-width: 768px) {
+  .interview-page {
+    padding: 1rem;
+  }
+
+  .content-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .match-score__ring {
+    width: 100px;
+    height: 100px;
+  }
+}
