@@ -13,33 +13,28 @@ const Home = () => {
     const navigate = useNavigate()
 
     const handleGenerateReport = async () => {
-    const resumeFile = resumeInputRef.current.files[0]
+        const resumeFile = resumeInputRef.current.files[0]
 
-    if (!jobDescription.trim()) {
-        alert("Please enter a Job Description")
-        return
+        if (!jobDescription.trim()) {
+            alert("Please enter a Job Description")
+            return
+        }
+
+        if (!selfDescription.trim() && !resumeFile) {
+            alert("Please enter a Self Description and upload your Resume")
+            return
+        }
+
+        const data = await generateReport({
+            jobDescription,
+            selfDescription,
+            resumeFile
+        })
+
+        if (data?._id) {
+            navigate(`/interview/${data._id}`)
+        }
     }
-
-    if (!selfDescription.trim()) {
-        alert("Please enter a Self Description")
-        return
-    }
-
-    if (!resumeFile) {
-        alert("Please upload your Resume PDF")
-        return
-    }
-
-    const data = await generateReport({
-        jobDescription,
-        selfDescription,
-        resumeFile
-    })
-
-    if (data?._id) {
-        navigate(`/interview/${data._id}`)
-    }
-}
 
     if (loading) {
         return (
