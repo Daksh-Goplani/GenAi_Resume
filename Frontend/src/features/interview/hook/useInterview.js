@@ -15,7 +15,7 @@ export const useInterview = () => {
         setLoading(true)
         let response = null
         try {
-            const response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile })
+            response = await generateInterviewReport({ jobDescription, selfDescription, resumeFile })
             setReport(response.interviewReport)
         } catch (error) {
             console.error("FULL ERROR:", error)
