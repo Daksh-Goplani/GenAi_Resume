@@ -35,6 +35,7 @@ Follow this structure EXACTLY:
 }
 
 IMPORTANT:
+-Change the data according to the provided resume, self description and job descriptionl
 - technicalQuestions must be an array of strings
 - behavioralQuestions must be an array of strings
 - skillGaps must be an array of strings
